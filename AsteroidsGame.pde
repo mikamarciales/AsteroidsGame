@@ -1,24 +1,19 @@
-//your variable declarations here
+SpaceShip katie = new SpaceShip();
 public void setup() 
 {
-  //your code here
+  size(1000, 800);
 }
 public void draw() 
 {
-  //your code here
+    background(0);
+  //fill(0, 0, 0, 25);
+  //noStroke();
+  //rect(-5, -5, 1005, 805);
+  //katie.move();
+  katie.show();
 }
 class SpaceShip extends Floater  
 {   
-  public void setX(int x)  {xCorners = x;}
-  public int getX() {return xCorners;}
-  public void setY(int y)  {yCorners = y;}
-  public int getY()  {return yCorners;}
-  public void setDirectionX(double x)  {myDirectionX = x;} 
-  public double getDirectionX()  {return myDirectionX;}
-  public void setDirectionY(double y)  {myDirectionY = y;}
-  public double getDirectionY()  {return myDirectionY;}
-  public void setPointDirection(int degrees) {myPointDirection = degrees;}
-  public double getPointDirection() {return myPointDirection;}
   public SpaceShip()
   {
     corners = 4;
@@ -26,11 +21,39 @@ class SpaceShip extends Floater
     yCorners = new int[corners];
     xCorners[0] = -8;
     yCorners[0] = -8;
-    xCorners[1] =
-    yCorners[1]
+    xCorners[1] = -2;
+    yCorners[1] = 0;
+    xCorners[2] = -8;
+    yCorners[2] = 8;
+    xCorners[3] = 16;
+    yCorners[3] = 0;
+    myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
+    myCenterX = 500;
+    myCenterY = 400;
+    myDirectionX = 0;
+    myDirectionY = 0;
+    myPointDirection = 0;
+  }
+  public void setX(int x)  {myCenterX = x;}
+  public int getX() {return (int)myCenterX;}
+  public void setY(int y)  {myCenterY = y;}
+  public int getY()  {return (int)myCenterY;}
+  public void setDirectionX(double x)  {myDirectionX = x;} 
+  public double getDirectionX()  {return myDirectionX;}
+  public void setDirectionY(double y)  {myDirectionY = y;}
+  public double getDirectionY()  {return myDirectionY;}
+  public void setPointDirection(int degrees) {myPointDirection = degrees;}
+  public double getPointDirection() {return myPointDirection;}
+}
 
+public void keyPressed()
+{
+  if (key == 'a')
+  {
+    katie.rotate(-10);
   }
 }
+
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
@@ -55,7 +78,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   public void accelerate (double dAmount)   
   {          
     //convert the current direction the floater is pointing to radians    
-    double dRadians =myPointDirection*(Math.PI/180);     
+    double dRadians = myPointDirection*(Math.PI/180);     
     //change coordinates of direction of travel    
     myDirectionX += ((dAmount) * Math.cos(dRadians));    
     myDirectionY += ((dAmount) * Math.sin(dRadians));       
