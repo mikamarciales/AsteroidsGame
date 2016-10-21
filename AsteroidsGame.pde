@@ -5,11 +5,11 @@ public void setup()
 }
 public void draw() 
 {
-    background(0);
+  noStroke();
+  background(0);
   //fill(0, 0, 0, 25);
-  //noStroke();
   //rect(-5, -5, 1005, 805);
-  //katie.move();
+  katie.move();
   katie.show();
 }
 class SpaceShip extends Floater  
@@ -50,8 +50,29 @@ public void keyPressed()
 {
   if (key == 'a')
   {
-    katie.rotate(-10);
+    katie.rotate(-7);
   }
+  if (key == 'd')
+  {
+    katie.rotate(7);
+  }
+  if (key == 'w')
+  {
+    katie.accelerate(2);
+  }
+  if (key == ' ')
+  {
+    katie.setDirectionX(0);
+    katie.setDirectionY(0);
+    katie.setX((int)(Math.random()*1000));
+    katie.setY((int)(Math.random()*800));
+    katie.setPointDirection((int)(Math.random()*360));
+  }
+  //if (key == 's')
+  //{
+    //katie.setDirectionX(0);
+    //katie.setDirectionY(0);
+  //}
 }
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
@@ -113,7 +134,8 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     }   
   }   
   public void show ()  //Draws the floater at the current position  
-  {             
+  {           
+    noStroke();  
     fill(myColor);   
     stroke(myColor);    
     //convert degrees to radians for sin and cos         
