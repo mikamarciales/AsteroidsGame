@@ -1,17 +1,47 @@
 SpaceShip katie = new SpaceShip();
+Star[] nightSky = new Star[300];
+
 public void setup() 
 {
   size(1000, 800);
+  for (int i = 0; i < nightSky.length; i++)
+  {
+    nightSky[i] = new Star();
+  }
 }
+
 public void draw() 
 {
   noStroke();
   background(0);
   //fill(0, 0, 0, 25);
   //rect(-5, -5, 1005, 805);
+  for (int i = 0; i < nightSky.length; i++)
+  {
+    nightSky[i].show();
+  }
   katie.move();
   katie.show();
 }
+
+class Star
+{
+  int starX, starY, starColor;
+  public Star()
+  {
+    starX = (int)(Math.random()*1000);
+    starY = (int)(Math.random()*800);
+    //starColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
+  }
+  public void show()
+  {
+    noStroke();
+    //fill(starColor);
+    fill(255);
+    ellipse(starX, starY, 2, 2);
+  }
+}
+
 class SpaceShip extends Floater  
 {   
   public SpaceShip()
@@ -50,17 +80,17 @@ public void keyPressed()
 {
   if (key == 'a')
   {
-    katie.rotate(-7);
+    katie.rotate(-10);
   }
   if (key == 'd')
   {
-    katie.rotate(7);
+    katie.rotate(10);
   }
-  if (key == 'w')
+  if (key == ' ')
   {
     katie.accelerate(2);
   }
-  if (key == ' ')
+  if (key == 'h')
   {
     katie.setDirectionX(0);
     katie.setDirectionY(0);
@@ -135,7 +165,6 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   }   
   public void show ()  //Draws the floater at the current position  
   {           
-    noStroke();  
     fill(myColor);   
     stroke(myColor);    
     //convert degrees to radians for sin and cos         
