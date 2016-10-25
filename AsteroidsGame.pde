@@ -26,20 +26,21 @@ public void draw()
 
 class Star
 {
-  int starX, starY, starColor;
+  private int starX, starY, starColor; 
+  private double starSize;
   public Star()
   {
     starX = (int)(Math.random()*1200);
     starY = (int)(Math.random()*800);
     //starColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
-    //starSize = (Math.)
+    starSize = (Math.random()+1);
   }
   public void show()
   {
     noStroke();
     //fill(starColor);
     fill(255);
-    ellipse(starX, starY, 2, 2);
+    ellipse((float)starX, (float)starY, (float)starSize, (float)starSize);
   }
 }
 
