@@ -102,6 +102,8 @@ public void keyPressed()
     katie.setX((int)(Math.random()*1200));
     katie.setY((int)(Math.random()*800));
     katie.setPointDirection((int)(Math.random()*360));
+    fill(255);
+    rect(-5, -5, 1205, 805);
   }
   //if (key == 's')
   //{
