@@ -1,9 +1,9 @@
 SpaceShip katie = new SpaceShip();
-Star[] nightSky = new Star[300];
+Star[] nightSky = new Star[500];
 
 public void setup() 
 {
-  size(1000, 800);
+  size(1200, 800);
   for (int i = 0; i < nightSky.length; i++)
   {
     nightSky[i] = new Star();
@@ -29,7 +29,7 @@ class Star
   int starX, starY, starColor;
   public Star()
   {
-    starX = (int)(Math.random()*1000);
+    starX = (int)(Math.random()*1200);
     starY = (int)(Math.random()*800);
     //starColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
   }
@@ -58,7 +58,7 @@ class SpaceShip extends Floater
     xCorners[3] = 16;
     yCorners[3] = 0;
     myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
-    myCenterX = 500;
+    myCenterX = 600;
     myCenterY = 400;
     myDirectionX = 0;
     myDirectionY = 0;
@@ -75,6 +75,8 @@ class SpaceShip extends Floater
   public void setPointDirection(int degrees) {myPointDirection = degrees;}
   public double getPointDirection() {return myPointDirection;}
 }
+
+
 
 public void keyPressed()
 {
@@ -94,7 +96,7 @@ public void keyPressed()
   {
     katie.setDirectionX(0);
     katie.setDirectionY(0);
-    katie.setX((int)(Math.random()*1000));
+    katie.setX((int)(Math.random()*1200));
     katie.setY((int)(Math.random()*800));
     katie.setPointDirection((int)(Math.random()*360));
   }
