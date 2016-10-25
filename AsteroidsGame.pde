@@ -32,6 +32,7 @@ class Star
     starX = (int)(Math.random()*1200);
     starY = (int)(Math.random()*800);
     //starColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
+    //starSize = (Math.)
   }
   public void show()
   {
@@ -80,11 +81,12 @@ class SpaceShip extends Floater
 
 public void keyPressed()
 {
-  if (key == 'a')
+  //System.out.println(key);
+  if (keyCode == LEFT)
   {
     katie.rotate(-10);
   }
-  if (key == 'd')
+  if (keyCode == RIGHT)
   {
     katie.rotate(10);
   }
