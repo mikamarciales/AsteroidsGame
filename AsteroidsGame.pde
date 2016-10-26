@@ -48,17 +48,23 @@ class SpaceShip extends Floater
 {   
   public SpaceShip()
   {
-    corners = 4;
+    corners = 7;
     xCorners = new int[corners];
     yCorners = new int[corners];
     xCorners[0] = -8;
-    yCorners[0] = -8;
+    yCorners[0] = -14;
     xCorners[1] = -2;
-    yCorners[1] = 0;
-    xCorners[2] = -8;
-    yCorners[2] = 8;
-    xCorners[3] = 16;
-    yCorners[3] = 0;
+    yCorners[1] = -6;
+    xCorners[2] = -12;
+    yCorners[2] = -2;
+    xCorners[3] = -12;
+    yCorners[3] = 2;
+    xCorners[4] = -2;
+    yCorners[4] = 6;
+    xCorners[5] = -8;
+    yCorners[5] = 14;
+    xCorners[6] = 18;
+    yCorners[6] = 0;
     myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     myCenterX = 600;
     myCenterY = 400;
