@@ -1,5 +1,6 @@
 SpaceShip katie = new SpaceShip();
 Star[] nightSky = new Star[500];
+Asteroid hannah = new Asteroid();
 
 public void setup() 
 {
@@ -22,6 +23,8 @@ public void draw()
   }
   katie.move();
   katie.show();
+  hannah.move();
+  hannah.show();
 }
 
 class Star
@@ -68,8 +71,8 @@ class Asteroid extends Floater
     yCorners[6] = 0;
     //myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     myColor = color(255);
-    myCenterX = 600;
-    myCenterY = 400;
+    myCenterX = (int)(Math.random()*1200);
+    myCenterY = (int)(Math.random()*800);
     myDirectionX = 0;
     myDirectionY = 0;
     myPointDirection = 0;
@@ -85,6 +88,11 @@ class Asteroid extends Floater
   public double getDirectionY()  {return myDirectionY;}
   public void setPointDirection(int degrees) {myPointDirection = degrees;}
   public double getPointDirection() {return myPointDirection;}
+  public void move()
+  {
+    rotate(aSpeed);
+    super.move();
+  }
 }
 
 class SpaceShip extends Floater  
