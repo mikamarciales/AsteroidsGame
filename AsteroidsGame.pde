@@ -1,6 +1,6 @@
 SpaceShip katie = new SpaceShip();
 Star[] nightSky = new Star[500];
-Asteroid hannah = new Asteroid();
+Asteroid[] aField = new Asteroid[45];
 
 public void setup() 
 {
@@ -8,6 +8,10 @@ public void setup()
   for (int i = 0; i < nightSky.length; i++)
   {
     nightSky[i] = new Star();
+  }
+  for (int i = 0; i < aField.length; i++)
+  {
+    aField[i] = new Asteroid();
   }
 }
 
@@ -23,8 +27,11 @@ public void draw()
   }
   katie.move();
   katie.show();
-  hannah.move();
-  hannah.show();
+  for (int i = 0; i < aField.length; i++)
+  {
+    aField[i].move();
+    aField[i].show();
+  }
 }
 
 class Star
@@ -50,33 +57,32 @@ class Star
 class Asteroid extends Floater
 {
   private int aSpeed;
+  private int pSize = (int)(Math.random()*3);
   public Asteroid()
   {
-    corners = 7;
+    corners = 6;
     xCorners = new int[corners];
     yCorners = new int[corners];
-    xCorners[0] = -8;
-    yCorners[0] = -14;
-    xCorners[1] = -2;
-    yCorners[1] = -6;
-    xCorners[2] = -12;
-    yCorners[2] = -2;
-    xCorners[3] = -12;
-    yCorners[3] = 2;
-    xCorners[4] = -2;
-    yCorners[4] = 6;
-    xCorners[5] = -8;
-    yCorners[5] = 14;
-    xCorners[6] = 18;
-    yCorners[6] = 0;
+    xCorners[0] = -10*pSize;
+    yCorners[0] = -7*pSize;
+    xCorners[1] = 6*pSize;
+    yCorners[1] = -7*pSize;
+    xCorners[2] = 12*pSize;
+    yCorners[2] = -1*pSize;
+    xCorners[3] = 5*pSize;
+    yCorners[3] = 9*pSize;
+    xCorners[4] = -10*pSize;
+    yCorners[4] = 7*pSize;
+    xCorners[5] = -14*pSize;
+    yCorners[5] = -1*pSize;
     //myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
-    myColor = color(255);
+    myColor = color(0);
     myCenterX = (int)(Math.random()*1200);
     myCenterY = (int)(Math.random()*800);
-    myDirectionX = 0;
-    myDirectionY = 0;
+    myDirectionX = ((Math.random()*.6)-0.3);
+    myDirectionY = ((Math.random()*.6)-0.3);
     myPointDirection = 0;
-    aSpeed = ((int)((Math.random()*5)-2));
+    aSpeed = (int)((Math.random()*5)-2);
   }
   public void setX(int x)  {myCenterX = x;}
   public int getX() {return (int)myCenterX;}
@@ -140,15 +146,15 @@ public void keyPressed()
   //System.out.println(key);
   if (keyCode == LEFT)
   {
-    katie.rotate(-10);
+    katie.rotate(-17);
   }
   if (keyCode == RIGHT)
   {
-    katie.rotate(10);
+    katie.rotate(17);
   }
   if (key == ' ')
   {
-    katie.accelerate(2);
+    katie.accelerate(1.5);
   }
   if (key == 'h')
   {
@@ -229,7 +235,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   public void show ()  //Draws the floater at the current position  
   {           
     fill(myColor);   
-    stroke(myColor);    
+    stroke(255);    
     //convert degrees to radians for sin and cos         
     double dRadians = myPointDirection*(Math.PI/180);                 
     int xRotatedTranslated, yRotatedTranslated;    
