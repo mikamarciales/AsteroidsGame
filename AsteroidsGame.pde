@@ -152,7 +152,7 @@ public void keyPressed()
   {
     katie.rotate(17);
   }
-  if (key == ' ')
+  if (key == 's')
   {
     katie.accelerate(1.5);
   }
@@ -166,12 +166,12 @@ public void keyPressed()
     fill(255);
     rect(-5, -5, 1205, 805);
   }
-  if (key == 's')
+  /*if (key == 's')
   {
     //katie.accelerate(-2);
     katie.setDirectionX(0);
     katie.setDirectionY(0);
-  }
+  }*/
 }
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
