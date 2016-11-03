@@ -152,7 +152,7 @@ public void keyPressed()
   {
     katie.rotate(17);
   }
-  if (key == 's')
+  if (key == ' ')
   {
     katie.accelerate(1.5);
   }
