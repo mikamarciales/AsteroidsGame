@@ -172,11 +172,11 @@ public void keyPressed()
   }
   if (key == 'w')
   {
-    katie.accelerate(1.5);
+    katie.accelerate(0.5);
   }
   if (key == 's')
   {
-    katie.accelerate(-1.5);
+    katie.accelerate(-0.5);
   }
   if (key == 'h')
   {
