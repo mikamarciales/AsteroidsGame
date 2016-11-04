@@ -56,7 +56,7 @@ class Star
 
 class Asteroid extends Floater
 {
-  private int aSpeed;
+  private int aSpeed, myColor2;
   private int pSize = (int)(Math.random()*3);
   public Asteroid()
   {
@@ -77,6 +77,7 @@ class Asteroid extends Floater
     yCorners[5] = -1*pSize;
     //myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     myColor = color(0);
+    myColor2 = color(255);
     myCenterX = (int)(Math.random()*1200);
     myCenterY = (int)(Math.random()*800);
     myDirectionX = ((Math.random()*.6)-0.3);
@@ -98,6 +99,23 @@ class Asteroid extends Floater
   {
     rotate(aSpeed);
     super.move();
+  }
+  public void show()
+  {
+    fill(myColor);   
+    stroke(myColor2);    
+    //convert degrees to radians for sin and cos         
+    double dRadians = myPointDirection*(Math.PI/180);                 
+    int xRotatedTranslated, yRotatedTranslated;    
+    beginShape();         
+    for(int nI = 0; nI < corners; nI++)    
+    {     
+      //rotate and translate the coordinates of the floater using current direction 
+      xRotatedTranslated = (int)((xCorners[nI]* Math.cos(dRadians)) - (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
+      yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.cos(dRadians))+myCenterY);      
+      vertex(xRotatedTranslated,yRotatedTranslated);    
+    }   
+    endShape(CLOSE); 
   }
 }
 
@@ -235,7 +253,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   public void show ()  //Draws the floater at the current position  
   {           
     fill(myColor);   
-    stroke(255);    
+    stroke(myColor);    
     //convert degrees to radians for sin and cos         
     double dRadians = myPointDirection*(Math.PI/180);                 
     int xRotatedTranslated, yRotatedTranslated;    
