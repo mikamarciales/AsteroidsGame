@@ -162,17 +162,21 @@ class SpaceShip extends Floater
 public void keyPressed()
 {
   //System.out.println(key);
-  if (keyCode == LEFT)
+  if (key == 'a')
   {
     katie.rotate(-17);
   }
-  if (keyCode == RIGHT)
+  if (key == 'd')
   {
     katie.rotate(17);
   }
-  if (key == ' ')
+  if (key == 'w')
   {
     katie.accelerate(1.5);
+  }
+  if (key == 's')
+  {
+    katie.accelerate(-1.5);
   }
   if (key == 'h')
   {
