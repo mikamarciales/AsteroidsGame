@@ -1,6 +1,7 @@
 SpaceShip katie = new SpaceShip();
 Star[] nightSky = new Star[500];
-Asteroid[] aField = new Asteroid[45];
+//Asteroid[] aField = new Asteroid[45];
+ArrayList <Asteroid> theList;
 
 public void setup() 
 {
@@ -9,9 +10,14 @@ public void setup()
   {
     nightSky[i] = new Star();
   }
-  for (int i = 0; i < aField.length; i++)
+  /*for (int i = 0; i < aField.length; i++)
   {
     aField[i] = new Asteroid();
+  }*/
+  theList = new ArrayList <Asteroid>();
+  for(int i=0; i<35; i++)
+  {
+    theList.add(i,new Asteroid());
   }
 }
 
@@ -27,10 +33,13 @@ public void draw()
   }
   katie.move();
   katie.show();
-  for (int i = 0; i < aField.length; i++)
+  for (int nI = 0; nI < theList.size(); nI++)
   {
-    aField[i].move();
-    aField[i].show();
+    //Asteroid betty = theList.get(nI);
+    //betty.move();
+    //betty.show();
+    theList.get(nI).move();
+    theList.get(nI).show();
   }
 }
 
