@@ -15,7 +15,7 @@ public void setup()
     aField[i] = new Asteroid();
   }*/
   theList = new ArrayList <Asteroid>();
-  for(int i=0; i<35; i++)
+  for(int i=0; i<45; i++)
   {
     theList.add(i,new Asteroid());
   }
@@ -40,6 +40,13 @@ public void draw()
     //betty.show();
     theList.get(nI).move();
     theList.get(nI).show();
+  }
+  for (int nI = theList.size()-1; nI >= 0; nI--)
+  {
+    if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
+    {
+      theList.remove(nI);
+    }
   }
 }
 
@@ -281,4 +288,3 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     endShape(CLOSE);  
   }   
 } 
-
