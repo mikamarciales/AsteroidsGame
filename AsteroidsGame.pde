@@ -44,6 +44,7 @@ public void draw()
     theList.get(nI).move();
     theList.get(nI).show();
   }
+
   for (int nI = theList.size()-1; nI >= 0; nI--)
   {
     if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
@@ -51,10 +52,18 @@ public void draw()
       theList.remove(nI);
     }
   }
-   for (int bI = 0; bI < theList.size(); bI++)
+   for (int bI = 0; bI < bList.size(); bI++)
   {
     bList.get(bI).move();
     bList.get(bI).show();
+  }
+  for (int bI = bList.size()-1; bI >= 0; bI--)
+  {
+    if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(bI).getX(), theList.get(bI).getY()) < 20)
+    {
+      theList.remove(bI);
+      bList.remove(bI);
+    }
   }
 
 }
@@ -152,8 +161,8 @@ class Bullet extends Floater
     myCenterY = theShip.getY();
     myPointDirection = theShip.getPointDirection();
     double dRadians = myPointDirection*(Math.PI/180);
-    myDirectionX = 5*Math.cos(dRadians) + myDirectionX;
-    myDirectionY = 5*Math.sin(dRadians) + myDirectionY;
+    myDirectionX = 5*Math.cos(dRadians) + theShip.myDirectionX;
+    myDirectionY = 5*Math.sin(dRadians) + theShip.myDirectionY;
     myColor = color(255);
   }
   public void setX(int x)  {myCenterX = x;}
@@ -169,9 +178,7 @@ class Bullet extends Floater
   public void show()
   {
     fill(myColor);   
-    stroke(myColor);    
-    //convert degrees to radians for sin and cos         
-    double dRadians = myPointDirection*(Math.PI/180);                 
+    stroke(myColor);             
     ellipse((float)myCenterX, (float)myCenterY, 2, 2);
   }
 }
@@ -219,19 +226,19 @@ class SpaceShip extends Floater
 public void keyPressed()
 {
   //System.out.println(key);
-  if (key == 'a')
+  if (keyCode == LEFT)
   {
     katie.rotate(-17);
   }
-  if (key == 'd')
+  if (keyCode == RIGHT)
   {
     katie.rotate(17);
   }
-  if (key == 'w')
+  if (keyCode == UP)
   {
     katie.accelerate(0.5);
   }
-  if (key == 's')
+  if (keyCode == DOWN)
   {
     katie.accelerate(-0.5);
   }
@@ -244,6 +251,13 @@ public void keyPressed()
     katie.setPointDirection((int)(Math.random()*360));
     fill(255);
     rect(-5, -5, 1205, 805);
+  }
+  if (key == ' ')
+  {
+    for(int i = 0; i < 10; i++)
+    {
+      bList.add(i, new Bullet(katie));
+    }
   }
   /*if (key == 's')
   {
