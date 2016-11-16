@@ -1,9 +1,7 @@
 SpaceShip katie = new SpaceShip();
 Star[] nightSky = new Star[500];
-//Asteroid[] aField = new Asteroid[45];
 ArrayList <Asteroid> theList;
 ArrayList <Bullet> bList;
-//Bullet boi = new Bullet(katie);
 
 public void setup() 
 {
@@ -12,10 +10,6 @@ public void setup()
   {
     nightSky[i] = new Star();
   }
-  /*for (int i = 0; i < aField.length; i++)
-  {
-    aField[i] = new Asteroid();
-  }*/
   theList = new ArrayList <Asteroid>();
   for(int i=0; i<45; i++)
   {
@@ -34,38 +28,42 @@ public void draw()
   {
     nightSky[i].show();
   }
+
   katie.move();
   katie.show();
+
   for (int nI = 0; nI < theList.size(); nI++)
   {
-    //Asteroid betty = theList.get(nI);
-    //betty.move();
-    //betty.show();
     theList.get(nI).move();
     theList.get(nI).show();
   }
+  // for (int nI = theList.size()-1; nI >= 0; nI--)
+  // {
+  //   if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
+  //   {
+  //     theList.remove(nI);
+  //   }
+  // }
 
-  for (int nI = theList.size()-1; nI >= 0; nI--)
-  {
-    if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
-    {
-      theList.remove(nI);
-    }
-  }
    for (int bI = 0; bI < bList.size(); bI++)
   {
     bList.get(bI).move();
     bList.get(bI).show();
   }
-  for (int bI = bList.size()-1; bI >= 0; bI--)
+  for (int nI = theList.size()-1; nI >= 0; nI--)
   {
-    if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(bI).getX(), theList.get(bI).getY()) < 20)
+    for (int bI = bList.size()-1; bI >= 0; bI--)
     {
-      theList.remove(bI);
-      bList.remove(bI);
+      if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
+      {
+        theList.remove(nI);
+        //System.out.println("Size of bList before is " + bList.size());
+        bList.remove(bI);
+        //System.out.println("Size of bList after is " + bList.size());
+        break;
+      }
     }
   }
-
 }
 
 class Star
@@ -179,7 +177,7 @@ class Bullet extends Floater
   {
     fill(myColor);   
     stroke(myColor);             
-    ellipse((float)myCenterX, (float)myCenterY, 2, 2);
+    ellipse((float)myCenterX, (float)myCenterY, 3, 3);
   }
 }
 
@@ -221,6 +219,23 @@ class SpaceShip extends Floater
   public double getDirectionY()  {return myDirectionY;}
   public void setPointDirection(int degrees) {myPointDirection = degrees;}
   public double getPointDirection() {return myPointDirection;}
+  public void show()
+  {
+    fill(myColor);   
+    stroke(255);    
+    //convert degrees to radians for sin and cos         
+    double dRadians = myPointDirection*(Math.PI/180);                 
+    int xRotatedTranslated, yRotatedTranslated;    
+    beginShape();         
+    for(int nI = 0; nI < corners; nI++)    
+    {     
+      //rotate and translate the coordinates of the floater using current direction 
+      xRotatedTranslated = (int)((xCorners[nI]* Math.cos(dRadians)) - (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
+      yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.cos(dRadians))+myCenterY);      
+      vertex(xRotatedTranslated,yRotatedTranslated);    
+    }   
+    endShape(CLOSE);  
+  }
 }
 
 public void keyPressed()
@@ -254,7 +269,7 @@ public void keyPressed()
   }
   if (key == ' ')
   {
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 1; i++)
     {
       bList.add(i, new Bullet(katie));
     }
