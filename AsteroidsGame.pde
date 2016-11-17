@@ -2,16 +2,17 @@ SpaceShip katie = new SpaceShip();
 Star[] nightSky = new Star[500];
 ArrayList <Asteroid> theList;
 ArrayList <Bullet> bList;
+int score = 0;
 
 public void setup() 
 {
-  size(1200, 800);
+  size(1150, 760);
   for (int i = 0; i < nightSky.length; i++)
   {
     nightSky[i] = new Star();
   }
   theList = new ArrayList <Asteroid>();
-  for(int i=0; i<45; i++)
+  for(int i=0; i<55; i++)
   {
     theList.add(i,new Asteroid());
   }
@@ -24,6 +25,8 @@ public void draw()
   background(0);
   //fill(0, 0, 0, 25);
   //rect(-5, -5, 1005, 805);
+  
+
   for (int i = 0; i < nightSky.length; i++)
   {
     nightSky[i].show();
@@ -60,10 +63,13 @@ public void draw()
         //System.out.println("Size of bList before is " + bList.size());
         bList.remove(bI);
         //System.out.println("Size of bList after is " + bList.size());
+        score = score + 10;
         break;
       }
     }
   }
+  
+  text("score: " + score, 100, 100);
 }
 
 class Star
@@ -72,8 +78,8 @@ class Star
   private double starSize;
   public Star()
   {
-    starX = (int)(Math.random()*1200);
-    starY = (int)(Math.random()*800);
+    starX = (int)(Math.random()*1150);
+    starY = (int)(Math.random()*760);
     //starColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     starSize = (Math.random()+1);
   }
@@ -110,8 +116,8 @@ class Asteroid extends Floater
     //myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     myColor = color(0);
     myColor2 = color(255);
-    myCenterX = (int)(Math.random()*1200);
-    myCenterY = (int)(Math.random()*800);
+    myCenterX = (int)(Math.random()*1150);
+    myCenterY = (int)(Math.random()*760);
     myDirectionX = ((Math.random()*.6)-0.3);
     myDirectionY = ((Math.random()*.6)-0.3);
     myPointDirection = 0;
@@ -203,8 +209,8 @@ class SpaceShip extends Floater
     xCorners[6] = 18;
     yCorners[6] = 0;
     myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
-    myCenterX = 600;
-    myCenterY = 400;
+    myCenterX = 575;
+    myCenterY = 380;
     myDirectionX = 0;
     myDirectionY = 0;
     myPointDirection = 0;
@@ -261,8 +267,8 @@ public void keyPressed()
   {
     katie.setDirectionX(0);
     katie.setDirectionY(0);
-    katie.setX((int)(Math.random()*1200));
-    katie.setY((int)(Math.random()*800));
+    katie.setX((int)(Math.random()*1150));
+    katie.setY((int)(Math.random()*760));
     katie.setPointDirection((int)(Math.random()*360));
     fill(255);
     rect(-5, -5, 1205, 805);
