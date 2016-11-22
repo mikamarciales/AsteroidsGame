@@ -3,6 +3,8 @@ Star[] nightSky = new Star[500];
 ArrayList <Asteroid> theList;
 ArrayList <Bullet> bList;
 int score = 0;
+int health = 100;
+boolean gameOver = false;
 
 public void setup() 
 {
@@ -25,7 +27,6 @@ public void draw()
   background(0);
   //fill(0, 0, 0, 25);
   //rect(-5, -5, 1005, 805);
-  
 
   for (int i = 0; i < nightSky.length; i++)
   {
@@ -40,13 +41,14 @@ public void draw()
     theList.get(nI).move();
     theList.get(nI).show();
   }
-  // for (int nI = theList.size()-1; nI >= 0; nI--)
-  // {
-  //   if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
-  //   {
-  //     theList.remove(nI);
-  //   }
-  // }
+   for (int nI = theList.size()-1; nI >= 0; nI--)
+   {
+     if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
+     {
+       theList.remove(nI);
+       health -= 5;
+     }
+  }
 
    for (int bI = 0; bI < bList.size(); bI++)
   {
@@ -63,13 +65,24 @@ public void draw()
         //System.out.println("Size of bList before is " + bList.size());
         bList.remove(bI);
         //System.out.println("Size of bList after is " + bList.size());
-        score = score + 10;
+        score += 10;
         break;
       }
     }
   }
-  
-  text("score: " + score, 100, 100);
+  fill(255);
+  textSize(25);
+  text("score: " + score, 45, 55);
+  text("health: " + health, 955, 55);
+  if (health == 0)
+  {
+    gameOver = true;
+  }
+  if (gameOver == true)
+  {
+    System.out.println("GAME OVER");
+  }
+
 }
 
 class Star
