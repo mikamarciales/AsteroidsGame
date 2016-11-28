@@ -5,6 +5,7 @@ ArrayList <Bullet> bList;
 int score = 0;
 int health = 100;
 boolean gameOver = false;
+//PFont myFont;
 
 public void setup() 
 {
@@ -23,6 +24,7 @@ public void setup()
 
 public void draw() 
 {
+  if (gameOver == false){
   noStroke();
   background(0);
   //fill(0, 0, 0, 25);
@@ -46,7 +48,7 @@ public void draw()
      if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
      {
        theList.remove(nI);
-       health -= 5;
+       health -= 20;
      }
   }
 
@@ -74,13 +76,23 @@ public void draw()
   textSize(25);
   text("score: " + score, 45, 55);
   text("health: " + health, 955, 55);
+  }
   if (health == 0)
   {
     gameOver = true;
   }
   if (gameOver == true)
   {
-    System.out.println("GAME OVER");
+    fill(0);
+    rect(-5, -5, 1155, 765);
+    fill(255);
+    //myFont = createFont("Monospace", 32);
+    //textFont(myFont);
+    textSize(100);
+    textAlign(CENTER);
+    text("GAME OVER", 575, 350);
+    textSize(50);
+    text("refresh page to try again.", 575, 410);
   }
 
 }
