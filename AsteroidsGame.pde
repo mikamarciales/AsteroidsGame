@@ -90,9 +90,9 @@ public void draw()
     //textFont(myFont);
     textSize(100);
     textAlign(CENTER);
-    text("GAME OVER", 575, 350);
+    text("GAME OVER", 575, 340);
     textSize(50);
-    text("refresh page to try again.", 575, 410);
+    text("refresh page to try again.", 575, 420);
   }
 
 }
@@ -274,11 +274,11 @@ public void keyPressed()
   //System.out.println(key);
   if (keyCode == LEFT)
   {
-    katie.rotate(-17);
+    katie.rotate(-15);
   }
   if (keyCode == RIGHT)
   {
-    katie.rotate(17);
+    katie.rotate(15);
   }
   if (keyCode == UP)
   {
