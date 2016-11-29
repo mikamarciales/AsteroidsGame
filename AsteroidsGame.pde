@@ -102,7 +102,7 @@ public void draw()
     text("score: " + score, 45, 55);
     text("health: " + health, 955, 55);
   }
-  if (score == 500)
+  if (score == 350)
   {
     winGame = true;
   }
