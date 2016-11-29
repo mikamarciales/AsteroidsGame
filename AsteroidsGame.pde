@@ -5,6 +5,7 @@ ArrayList <Bullet> bList;
 int score = 0;
 int health = 100;
 boolean gameOver = false;
+boolean winGame = false;
 //PFont myFont;
 
 public void setup() 
@@ -24,7 +25,7 @@ public void setup()
 
 public void draw() 
 {
-  if (gameOver == false){
+  if (gameOver == false && winGame == false){
   noStroke();
   background(0);
   //fill(0, 0, 0, 25);
@@ -48,11 +49,11 @@ public void draw()
      if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
      {
        theList.remove(nI);
-       health -= 20;
+       health -= 5;
      }
   }
 
-   for (int bI = 0; bI < bList.size(); bI++)
+  for (int bI = 0; bI < bList.size(); bI++)
   {
     bList.get(bI).move();
     bList.get(bI).show();
@@ -85,14 +86,45 @@ public void draw()
   {
     fill(0);
     rect(-5, -5, 1155, 765);
+    for (int i = 0; i < nightSky.length; i++)
+    {
+      nightSky[i].show();
+    }
     fill(255);
-    //myFont = createFont("Monospace", 32);
-    //textFont(myFont);
-    textSize(100);
+    textSize(85);
     textAlign(CENTER);
-    text("GAME OVER", 575, 340);
+    text("G A M E O V E R", 575, 340);
     textSize(50);
     text("refresh page to try again.", 575, 420);
+    fill(255);
+    textSize(25);
+    textAlign(LEFT);
+    text("score: " + score, 45, 55);
+    text("health: " + health, 955, 55);
+  }
+  if (score == 500)
+  {
+    winGame = true;
+  }
+  if (winGame == true)
+  {
+    fill(0);
+    rect(-5, -5, 1155, 765);
+    for (int i = 0; i < nightSky.length; i++)
+    {
+      nightSky[i].show();
+    }
+    fill(255);
+    textSize(85);
+    textAlign(CENTER);
+    text("C O N G R A T S", 575, 340);
+    textSize(50);
+    text("refresh page to play again!", 575, 420);
+    fill(255);
+    textSize(25);
+    textAlign(LEFT);
+    text("score: " + score, 45, 55);
+    text("health: " + health, 955, 55);
   }
 
 }
