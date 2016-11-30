@@ -6,20 +6,22 @@ int score = 0;
 int health = 100;
 boolean gameOver = false;
 boolean winGame = false;
-//PFont myFont;
 
 public void setup() 
 {
   size(1150, 760);
+
   for (int i = 0; i < nightSky.length; i++)
   {
     nightSky[i] = new Star();
   }
+
   theList = new ArrayList <Asteroid>();
   for(int i=0; i<55; i++)
   {
     theList.add(i,new Asteroid());
   }
+
   bList = new ArrayList <Bullet>();
 }
 
@@ -28,8 +30,6 @@ public void draw()
   if (gameOver == false && winGame == false){
   noStroke();
   background(0);
-  //fill(0, 0, 0, 25);
-  //rect(-5, -5, 1005, 805);
 
   for (int i = 0; i < nightSky.length; i++)
   {
@@ -46,7 +46,7 @@ public void draw()
   }
    for (int nI = theList.size()-1; nI >= 0; nI--)
    {
-     if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
+     if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 25)
      {
        theList.remove(nI);
        health -= 5;
@@ -62,17 +62,16 @@ public void draw()
   {
     for (int bI = bList.size()-1; bI >= 0; bI--)
     {
-      if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
+      if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 25)
       {
         theList.remove(nI);
-        //System.out.println("Size of bList before is " + bList.size());
         bList.remove(bI);
-        //System.out.println("Size of bList after is " + bList.size());
         score += 10;
         break;
       }
     }
   }
+
   fill(255);
   textSize(25);
   text("score: " + score, 45, 55);
@@ -175,10 +174,10 @@ class Asteroid extends Floater
     myColor2 = color(255);
     myCenterX = (int)(Math.random()*1150);
     myCenterY = (int)(Math.random()*760);
-    myDirectionX = ((Math.random()*.6)-0.3);
-    myDirectionY = ((Math.random()*.6)-0.3);
+    myDirectionX = ((Math.random()*2)-1);
+    myDirectionY = ((Math.random()*2)-1);
     myPointDirection = 0;
-    aSpeed = (int)((Math.random()*5)-2);
+    aSpeed = (int)((Math.random()*6)-3);
   }
   public void setX(int x)  {myCenterX = x;}
   public int getX() {return (int)myCenterX;}
@@ -198,14 +197,12 @@ class Asteroid extends Floater
   public void show()
   {
     fill(myColor);   
-    stroke(myColor2);    
-    //convert degrees to radians for sin and cos         
+    stroke(myColor2);           
     double dRadians = myPointDirection*(Math.PI/180);                 
     int xRotatedTranslated, yRotatedTranslated;    
     beginShape();         
     for(int nI = 0; nI < corners; nI++)    
     {     
-      //rotate and translate the coordinates of the floater using current direction 
       xRotatedTranslated = (int)((xCorners[nI]* Math.cos(dRadians)) - (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
       yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.cos(dRadians))+myCenterY);      
       vertex(xRotatedTranslated,yRotatedTranslated);    
@@ -285,14 +282,12 @@ class SpaceShip extends Floater
   public void show()
   {
     fill(myColor);   
-    stroke(255);    
-    //convert degrees to radians for sin and cos         
+    stroke(255);           
     double dRadians = myPointDirection*(Math.PI/180);                 
     int xRotatedTranslated, yRotatedTranslated;    
     beginShape();         
     for(int nI = 0; nI < corners; nI++)    
     {     
-      //rotate and translate the coordinates of the floater using current direction 
       xRotatedTranslated = (int)((xCorners[nI]* Math.cos(dRadians)) - (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
       yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.cos(dRadians))+myCenterY);      
       vertex(xRotatedTranslated,yRotatedTranslated);    
@@ -303,7 +298,6 @@ class SpaceShip extends Floater
 
 public void keyPressed()
 {
-  //System.out.println(key);
   if (keyCode == LEFT)
   {
     katie.rotate(-15);
@@ -337,12 +331,6 @@ public void keyPressed()
       bList.add(i, new Bullet(katie));
     }
   }
-  /*if (key == 's')
-  {
-    //katie.accelerate(-2);
-    katie.setDirectionX(0);
-    katie.setDirectionY(0);
-  }*/
 }
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
