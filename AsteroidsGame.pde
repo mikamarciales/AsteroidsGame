@@ -128,7 +128,7 @@ public void draw()
     text("score: " + score, 45, 55);
     text("health: " + health, 955, 55);
   }
-System.out.println(numAsteroids);
+//System.out.println(numAsteroids);
 }
 
 class Star
@@ -243,8 +243,7 @@ class Bullet extends Floater
     ellipse((float)myCenterX, (float)myCenterY, 3, 3);
   }
   public void move()
-  {
-    //change the x and y coordinates by myDirectionX and myDirectionY       
+  { 
     myCenterX += myDirectionX;    
     myCenterY += myDirectionY;     
   }
