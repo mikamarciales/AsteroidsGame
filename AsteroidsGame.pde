@@ -6,6 +6,7 @@ int score = 0;
 int health = 100;
 boolean gameOver = false;
 boolean winGame = false;
+int numAsteroids = 55;
 
 public void setup() 
 {
@@ -50,6 +51,7 @@ public void draw()
      {
        theList.remove(nI);
        health -= 5;
+       numAsteroids -= 1;
      }
   }
 
@@ -67,6 +69,7 @@ public void draw()
         theList.remove(nI);
         bList.remove(bI);
         score += 10;
+        numAsteroids -= 1;
         break;
       }
     }
@@ -101,7 +104,7 @@ public void draw()
     text("score: " + score, 45, 55);
     text("health: " + health, 955, 55);
   }
-  if (score == 350)
+  if (numAsteroids == 0)
   {
     winGame = true;
   }
@@ -125,7 +128,7 @@ public void draw()
     text("score: " + score, 45, 55);
     text("health: " + health, 955, 55);
   }
-
+System.out.println(numAsteroids);
 }
 
 class Star
@@ -238,6 +241,12 @@ class Bullet extends Floater
     fill(myColor);   
     stroke(myColor);             
     ellipse((float)myCenterX, (float)myCenterY, 3, 3);
+  }
+  public void move()
+  {
+    //change the x and y coordinates by myDirectionX and myDirectionY       
+    myCenterX += myDirectionX;    
+    myCenterY += myDirectionY;     
   }
 }
 
