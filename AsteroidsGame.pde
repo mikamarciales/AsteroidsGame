@@ -50,7 +50,7 @@ public void draw()
      if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 25)
      {
        theList.remove(nI);
-       health -= 5;
+       health -= 10;
        numAsteroids -= 1;
      }
   }
