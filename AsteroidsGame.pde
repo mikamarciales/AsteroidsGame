@@ -128,7 +128,7 @@ public void draw()
     text("score: " + score, 45, 55);
     text("health: " + health, 955, 55);
   }
-//System.out.println(numAsteroids);
+System.out.println(numAsteroids);
 }
 
 class Star
@@ -174,7 +174,7 @@ class Asteroid extends Floater
     yCorners[5] = -1*pSize;
     //myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     myColor = color(0);
-    myColor2 = color(255);
+    //myColor2 = color(255);
     myCenterX = (int)(Math.random()*1150);
     myCenterY = (int)(Math.random()*760);
     myDirectionX = ((Math.random()*2)-1);
@@ -200,7 +200,7 @@ class Asteroid extends Floater
   public void show()
   {
     fill(myColor);   
-    stroke(myColor2);           
+    stroke(255);           
     double dRadians = myPointDirection*(Math.PI/180);                 
     int xRotatedTranslated, yRotatedTranslated;    
     beginShape();         
@@ -210,7 +210,7 @@ class Asteroid extends Floater
       yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.cos(dRadians))+myCenterY);      
       vertex(xRotatedTranslated,yRotatedTranslated);    
     }   
-    endShape(CLOSE); 
+    endShape(CLOSE);
   }
 }
 
@@ -245,7 +245,23 @@ class Bullet extends Floater
   public void move()
   { 
     myCenterX += myDirectionX;    
-    myCenterY += myDirectionY;     
+    myCenterY += myDirectionY;
+    /*if(myCenterX > width)
+    {     
+      bList.remove(this);    
+    }    
+    else if (myCenterX < 0)
+    {     
+      bList.remove(this);    
+    }    
+    if(myCenterY > height)
+    {    
+      bList.remove(this);    
+    }   
+    else if (myCenterY < 0)
+    {     
+      bList.remove(this);    
+    }*/   
   }
 }
 
