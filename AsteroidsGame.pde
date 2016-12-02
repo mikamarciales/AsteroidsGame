@@ -4,6 +4,7 @@ ArrayList <Asteroid> theList;
 ArrayList <Bullet> bList;
 int score = 0;
 int health = 100;
+int numAsteroids = 55;
 boolean gameOver = false;
 boolean winGame = false;
 boolean spaceIsPressed = false;
@@ -11,7 +12,6 @@ boolean upIsPressed = false;
 boolean downIsPressed = false;
 boolean leftIsPressed = false;
 boolean rightIsPressed = false;
-int numAsteroids = 55;
 
 public void setup() 
 {
@@ -52,7 +52,7 @@ public void draw()
   }
    for (int nI = theList.size()-1; nI >= 0; nI--)
    {
-     if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 25)
+     if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
      {
        theList.remove(nI);
        health -= 10;
@@ -69,7 +69,7 @@ public void draw()
   {
     for (int bI = bList.size()-1; bI >= 0; bI--)
     {
-      if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 25)
+      if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
       {
         theList.remove(nI);
         bList.remove(bI);
@@ -133,24 +133,21 @@ public void draw()
     text("score: " + score, 45, 55);
     text("health: " + health, 955, 55);
   }
-//System.out.println(numAsteroids);
 }
 
 class Star
 {
-  private int starX, starY, starColor; 
+  private int starX, starY; 
   private double starSize;
   public Star()
   {
     starX = (int)(Math.random()*1150);
     starY = (int)(Math.random()*760);
-    //starColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     starSize = (Math.random()+1);
   }
   public void show()
   {
     noStroke();
-    //fill(starColor);
     fill(255);
     ellipse((float)starX, (float)starY, (float)starSize, (float)starSize);
   }
@@ -158,7 +155,7 @@ class Star
 
 class Asteroid extends Floater
 {
-  private int aSpeed, myColor2, pSize;
+  private int aSpeed, pSize;
   public Asteroid()
   {
     pSize = (int)(Math.random()*3)+1;
@@ -177,9 +174,7 @@ class Asteroid extends Floater
     yCorners[4] = 7*pSize;
     xCorners[5] = -14*pSize;
     yCorners[5] = -1*pSize;
-    //myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     myColor = color(0);
-    //myColor2 = color(255);
     myCenterX = (int)(Math.random()*1150);
     myCenterY = (int)(Math.random()*760);
     myDirectionX = ((Math.random()*2)-1);
@@ -251,22 +246,6 @@ class Bullet extends Floater
   { 
     myCenterX += myDirectionX;    
     myCenterY += myDirectionY;
-    /*if(myCenterX > width)
-    {     
-      bList.remove(this);    
-    }    
-    else if (myCenterX < 0)
-    {     
-      bList.remove(this);    
-    }    
-    if(myCenterY > height)
-    {    
-      bList.remove(this);    
-    }   
-    else if (myCenterY < 0)
-    {     
-      bList.remove(this);    
-    }*/   
   }
 }
 
@@ -419,24 +398,17 @@ public void keyReleased()
   if (keyCode == RIGHT)
   {
     rightIsPressed = false;
-    //katie.rotate(15);
   }
   if (keyCode == UP)
   {
     upIsPressed = false;
-    //katie.accelerate(0.5);
   }
   if (keyCode == DOWN)
   {
     downIsPressed = false;
-    //katie.accelerate(-0.5);
   }
   if (key == ' ')
   {
-    /*for(int i = 0; i < 1; i++)
-    {
-      bList.add(i, new Bullet(katie));
-    }*/
     spaceIsPressed = false;
   }
 }
