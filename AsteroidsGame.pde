@@ -6,6 +6,11 @@ int score = 0;
 int health = 100;
 boolean gameOver = false;
 boolean winGame = false;
+boolean spaceIsPressed = false;
+boolean upIsPressed = false;
+boolean downIsPressed = false;
+boolean leftIsPressed = false;
+boolean rightIsPressed = false;
 int numAsteroids = 55;
 
 public void setup() 
@@ -153,10 +158,10 @@ class Star
 
 class Asteroid extends Floater
 {
-  private int aSpeed, myColor2;
-  private int pSize = (int)(Math.random()*3);
+  private int aSpeed, myColor2, pSize;
   public Asteroid()
   {
+    pSize = (int)(Math.random()*3)+1;
     corners = 6;
     xCorners = new int[corners];
     yCorners = new int[corners];
@@ -324,19 +329,74 @@ public void keyPressed()
 {
   if (keyCode == LEFT)
   {
-    katie.rotate(-15);
+    leftIsPressed = true;
   }
   if (keyCode == RIGHT)
   {
-    katie.rotate(15);
+    rightIsPressed = true;
   }
   if (keyCode == UP)
   {
-    katie.accelerate(0.5);
+    upIsPressed = true;
   }
   if (keyCode == DOWN)
   {
+    downIsPressed = true;
+  }
+  if (key == ' ')
+  {
+    spaceIsPressed = true;
+  }
+  if (leftIsPressed == true)
+  {
+    katie.rotate(-15);
+  }
+  if (rightIsPressed == true)
+  {
+    katie.rotate(15);
+  }
+  if (upIsPressed == true)
+  {
+    katie.accelerate(0.5);
+  }
+  if (downIsPressed == true)
+  {
     katie.accelerate(-0.5);
+  }
+  if (spaceIsPressed == true && leftIsPressed == true)
+  {
+    for(int i = 0; i < 1; i++)
+    {
+      bList.add(i, new Bullet(katie));
+    }
+  }
+  if (spaceIsPressed == true && rightIsPressed == true)
+  {
+    for(int i = 0; i < 1; i++)
+    {
+      bList.add(i, new Bullet(katie));
+    }
+  }
+  if (spaceIsPressed == true && upIsPressed == true)
+  {
+    for(int i = 0; i < 1; i++)
+    {
+      bList.add(i, new Bullet(katie));
+    }
+  }
+  if (spaceIsPressed == true && downIsPressed == true)
+  {
+    for(int i = 0; i < 1; i++)
+    {
+      bList.add(i, new Bullet(katie));
+    }
+  }
+  if (spaceIsPressed == true)
+  {
+    for(int i = 0; i < 1; i++)
+    {
+      bList.add(i, new Bullet(katie));
+    }
   }
   if (key == 'h')
   {
@@ -348,12 +408,36 @@ public void keyPressed()
     fill(255);
     rect(-5, -5, 1205, 805);
   }
+}
+
+public void keyReleased()
+{
+  if (keyCode == LEFT)
+  {
+    leftIsPressed = false;
+  }
+  if (keyCode == RIGHT)
+  {
+    rightIsPressed = false;
+    //katie.rotate(15);
+  }
+  if (keyCode == UP)
+  {
+    upIsPressed = false;
+    //katie.accelerate(0.5);
+  }
+  if (keyCode == DOWN)
+  {
+    downIsPressed = false;
+    //katie.accelerate(-0.5);
+  }
   if (key == ' ')
   {
-    for(int i = 0; i < 1; i++)
+    /*for(int i = 0; i < 1; i++)
     {
       bList.add(i, new Bullet(katie));
-    }
+    }*/
+    spaceIsPressed = false;
   }
 }
 
