@@ -15,7 +15,7 @@ boolean rightIsPressed = false;
 
 public void setup() 
 {
-  size(1150, 760);
+  size(1000, 650);
 
   for (int i = 0; i < nightSky.length; i++)
   {
@@ -83,7 +83,7 @@ public void draw()
   fill(255);
   textSize(25);
   text("score: " + score, 45, 55);
-  text("health: " + health, 955, 55);
+  text("health: " + health, 795, 55);
   }
   if (health == 0)
   {
@@ -92,7 +92,7 @@ public void draw()
   if (gameOver == true)
   {
     fill(0);
-    rect(-5, -5, 1155, 765);
+    rect(-5, -5, 1005, 655);
     for (int i = 0; i < nightSky.length; i++)
     {
       nightSky[i].show();
@@ -100,14 +100,14 @@ public void draw()
     fill(255);
     textSize(85);
     textAlign(CENTER);
-    text("G A M E O V E R", 575, 340);
+    text("G A M E O V E R", 500, 260);
     textSize(50);
-    text("refresh page to try again.", 575, 420);
+    text("refresh page to try again.", 500, 390);
     fill(255);
     textSize(25);
     textAlign(LEFT);
     text("score: " + score, 45, 55);
-    text("health: " + health, 955, 55);
+    text("health: " + health, 795, 55);
   }
   if (numAsteroids == 0)
   {
@@ -116,7 +116,7 @@ public void draw()
   if (winGame == true)
   {
     fill(0);
-    rect(-5, -5, 1155, 765);
+    rect(-5, -5, 1005, 655);
     for (int i = 0; i < nightSky.length; i++)
     {
       nightSky[i].show();
@@ -124,14 +124,14 @@ public void draw()
     fill(255);
     textSize(85);
     textAlign(CENTER);
-    text("C O N G R A T S", 575, 340);
+    text("C O N G R A T S", 500, 260);
     textSize(50);
-    text("refresh page to play again!", 575, 420);
+    text("refresh page to play again!", 500, 390);
     fill(255);
     textSize(25);
     textAlign(LEFT);
     text("score: " + score, 45, 55);
-    text("health: " + health, 955, 55);
+    text("health: " + health, 795, 55);
   }
 }
 
@@ -141,8 +141,8 @@ class Star
   private double starSize;
   public Star()
   {
-    starX = (int)(Math.random()*1150);
-    starY = (int)(Math.random()*760);
+    starX = (int)(Math.random()*1000);
+    starY = (int)(Math.random()*650);
     starSize = (Math.random()+1);
   }
   public void show()
@@ -175,8 +175,8 @@ class Asteroid extends Floater
     xCorners[5] = -14*pSize;
     yCorners[5] = -1*pSize;
     myColor = color(0);
-    myCenterX = (int)(Math.random()*1150);
-    myCenterY = (int)(Math.random()*760);
+    myCenterX = (int)(Math.random()*1000);
+    myCenterY = (int)(Math.random()*650);
     myDirectionX = ((Math.random()*2)-1);
     myDirectionY = ((Math.random()*2)-1);
     myPointDirection = 0;
@@ -271,8 +271,8 @@ class SpaceShip extends Floater
     xCorners[6] = 18;
     yCorners[6] = 0;
     myColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
-    myCenterX = 575;
-    myCenterY = 380;
+    myCenterX = 500;
+    myCenterY = 325;
     myDirectionX = 0;
     myDirectionY = 0;
     myPointDirection = 0;
@@ -381,8 +381,8 @@ public void keyPressed()
   {
     katie.setDirectionX(0);
     katie.setDirectionY(0);
-    katie.setX((int)(Math.random()*1150));
-    katie.setY((int)(Math.random()*760));
+    katie.setX((int)(Math.random()*1000));
+    katie.setY((int)(Math.random()*650));
     katie.setPointDirection((int)(Math.random()*360));
     fill(255);
     rect(-5, -5, 1205, 805);
