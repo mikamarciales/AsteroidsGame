@@ -128,7 +128,7 @@ public void draw()
     text("score: " + score, 45, 55);
     text("health: " + health, 955, 55);
   }
-System.out.println(numAsteroids);
+//System.out.println(numAsteroids);
 }
 
 class Star
