@@ -83,7 +83,7 @@ public void draw()
   fill(255);
   textSize(25);
   text("score: " + score, 45, 55);
-  text("health: " + health, 795, 55);
+  text("health: " + health, 815, 55);
   }
   if (health == 0)
   {
@@ -107,7 +107,7 @@ public void draw()
     textSize(25);
     textAlign(LEFT);
     text("score: " + score, 45, 55);
-    text("health: " + health, 795, 55);
+    text("health: " + health, 815, 55);
   }
   if (numAsteroids == 0)
   {
@@ -131,7 +131,7 @@ public void draw()
     textSize(25);
     textAlign(LEFT);
     text("score: " + score, 45, 55);
-    text("health: " + health, 795, 55);
+    text("health: " + health, 815, 55);
   }
 }
 
