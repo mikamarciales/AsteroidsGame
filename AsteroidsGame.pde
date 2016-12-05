@@ -180,7 +180,7 @@ class Asteroid extends Floater
     myDirectionX = ((Math.random()*2)-1);
     myDirectionY = ((Math.random()*2)-1);
     myPointDirection = 0;
-    aSpeed = (int)((Math.random()*6)-3);
+    aSpeed = (int)((Math.random()*7)-2);
   }
   public void setX(int x)  {myCenterX = x;}
   public int getX() {return (int)myCenterX;}
