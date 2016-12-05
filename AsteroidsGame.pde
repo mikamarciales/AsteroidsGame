@@ -100,9 +100,9 @@ public void draw()
     fill(255);
     textSize(85);
     textAlign(CENTER);
-    text("G A M E O V E R", 500, 260);
+    text("G A M E O V E R", 500, 290);
     textSize(50);
-    text("refresh page to try again.", 500, 390);
+    text("refresh page to try again.", 500, 370);
     fill(255);
     textSize(25);
     textAlign(LEFT);
@@ -124,9 +124,9 @@ public void draw()
     fill(255);
     textSize(85);
     textAlign(CENTER);
-    text("C O N G R A T S", 500, 260);
+    text("C O N G R A T S", 500, 290);
     textSize(50);
-    text("refresh page to play again!", 500, 390);
+    text("refresh page to play again!", 500, 370);
     fill(255);
     textSize(25);
     textAlign(LEFT);
