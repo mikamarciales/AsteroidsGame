@@ -52,7 +52,7 @@ public void draw()
   }
    for (int nI = theList.size()-1; nI >= 0; nI--)
    {
-     if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
+     if (dist(katie.getX(), katie.getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 30)
      {
        theList.remove(nI);
        health -= 10;
@@ -69,7 +69,7 @@ public void draw()
   {
     for (int bI = bList.size()-1; bI >= 0; bI--)
     {
-      if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 20)
+      if (dist(bList.get(bI).getX(), bList.get(bI).getY(), theList.get(nI).getX(), theList.get(nI).getY()) < 30)
       {
         theList.remove(nI);
         bList.remove(bI);
